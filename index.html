@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ADITMARKET — Top-up & Joki Game</title>
+  <meta name="description" content="ADITMARKET - Top-up game & joki. Pesan cepat via WhatsApp 6289652853591" />
+  <style>
+    :root{
+      --pink:#ff4fa3;
+      --purple:#7c5cff;
+      --accent:#ffd24d;
+      --muted:#6b7280;
+      --white: #ffffff;
+      --card: rgba(255,255,255,0.96);
+      --radius:18px;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:#111;background:linear-gradient(180deg,#ffe6fb,#fff);-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    header{
+      position:fixed;top:18px;left:50%;transform:translateX(-50%);
+      width:calc(100% - 40px);max-width:var(--maxw);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:12px 18px;background:var(--card);border-radius:999px;box-shadow:0 8px 30px rgba(12,15,25,0.06);z-index:40;
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand .logo{width:56px;height:56px;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,var(--purple),var(--pink));display:grid;place-items:center;flex:0 0 56px}
+    .brand .logo img{width:100%;height:100%;object-fit:cover;display:block}
+    .brand h1{font-size:18px;margin:0;color:var(--purple);letter-spacing:0.6px}
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--muted);font-weight:600}
+    nav a:hover{background:rgba(0,0,0,0.04);color:var(--purple)}
+    /* container */
+    .wrap{max-width:var(--maxw);margin:120px auto 60px;padding:22px}
+    /* hero styles */
+    .hero{
+      background: radial-gradient(800px 400px at 10% 10%, rgba(124,92,255,0.08), transparent 10%),
+                  radial-gradient(700px 350px at 90% 90%, rgba(255,79,163,0.06), transparent 10%),
+                  linear-gradient(180deg,#ffeff8,#fff);
+      border-radius:20px;padding:44px;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;box-shadow:0 20px 60px rgba(2,6,23,0.06)
+    }
+    .hero h2{font-size:44px;margin:0;color:var(--purple);line-height:1}
+    .hero p{color:var(--muted);margin-top:12px;max-width:640px}
+    /* form card */
+    .form-card{background:var(--card);padding:20px;border-radius:14px;box-shadow:0 8px 30px rgba(12,15,25,0.04);margin-top:22px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    label{display:block;font-size:13px;color:#111;font-weight:600;margin-bottom:6px}
+    input[type="text"],input[type="email"],select{width:100%;padding:12px;border-radius:10px;border:1px solid #e6e6e9;background:#fff;font-size:14px}
+    .full{grid-column:1 / -1}
+    .wa-btn{
+      display:inline-block;margin-top:12px;background:linear-gradient(90deg,var(--purple),var(--pink));color:#fff;padding:12px 18px;border-radius:12px;border:none;font-weight:700;cursor:pointer;width:100%;
+      box-shadow:0 12px 30px rgba(124,92,255,0.12);transition:transform .15s ease;
+    }
+    .wa-btn:hover{transform:translateY(-4px)}
+    /* illustration */
+    .hero-ill{display:grid;place-items:center}
+    .hero-ill img{width:420px;max-width:100%;border-radius:14px;filter:drop-shadow(0 18px 40px rgba(124,92,255,0.14))}
+    .ill-fallback{width:420px;height:420px;border-radius:14px;background:linear-gradient(135deg,#ffd7e6,#ffc3d9);display:grid;place-items:center;font-weight:900;color:#7c2b5a}
+    /* sections */
+    .section{margin-top:36px}
+    .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .price{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(12,15,25,0.04);text-align:center}
+    .price h4{margin:8px 0;color:var(--purple)}
+    .testimoni{background:linear-gradient(180deg,#fff,#fff0fb);padding:28px;border-radius:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .test{background:#fff;padding:16px;border-radius:12px;border:1px solid #f1f1f4}
+    /* footer */
+    footer{margin-top:36px;padding:28px;text-align:center;color:var(--muted)}
+    /* toggle view small */
+    .view-toggle{display:flex;gap:8px;justify-content:center;margin-bottom:18px}
+    .toggle{padding:8px 12px;border-radius:999px;background:#fff;border:1px solid #f1f1f4;cursor:pointer}
+    .toggle.active{background:linear-gradient(90deg,var(--purple),var(--pink));color:#fff;border:none;box-shadow:0 10px 30px rgba(124,92,255,0.1)}
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; padding:26px}
+      .hero-ill{order:-1}
+      .prices{grid-template-columns:repeat(2,1fr)}
+      .testimoni{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      header{left:12px;right:12px;transform:none;width:auto}
+      .price{padding:14px}
+      .hero h2{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header role="banner" aria-label="Header ADITMARKET">
+    <div class="brand">
+      <div class="logo" id="logoWrap">
+        <img src="condet.png.png" alt="ADITMARKET logo" id="siteLogo" onerror="logoMissing()" />
+      </div>
+      <div>
+        <h1>ADITMARKET</h1>
+        <div style="font-size:12px;color:var(--muted)">Top-up • Joki • Marketplace</div>
+      </div>
+    </div>
+
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#order">Top-Up</a>
+      <a href="#pricing">Harga</a>
+      <a href="#testimoni">Testimoni</a>
+      <a href="#contact">Kontak</a>
+    </nav>
+  </header>
+
+  <!-- Main wrapper -->
+  <main class="wrap" id="home">
+    <!-- toggle: two visual styles (keeps background image if present) -->
+    <div class="view-toggle" role="tablist" aria-label="Pilih tampilan">
+      <button class="toggle active" id="viewA">Tampilan A</button>
+      <button class="toggle" id="viewB">Tampilan B</button>
+    </div>
+
+    <!-- HERO A (default) -->
+    <section class="hero" id="heroA" aria-labelledby="heroAHeading" role="region">
+      <div>
+        <div style="font-size:13px;color:var(--muted)">WA: <strong>0896 5285 3591</strong></div>
+        <h2 id="heroAHeading">TOP-UP & JOKI GAME CEPAT, AMAN, TERPERCAYA</h2>
+        <p>Dapatkan diamond, UC, dan layanan joki cepat dari tim ADITMARKET. Konfirmasi otomatis & manual melalui WhatsApp — aman dan cepat.</p>
+
+        <div class="form-card" id="order" role="form" aria-label="Form order topup">
+          <div style="font-weight:800;margin-bottom:8px">Pesan via WhatsApp</div>
+          <div class="form-grid">
+            <div>
+              <label for="game">Pilih Game</label>
+              <select id="game" required>
+                <option value="">— Pilih game —</option>
+                <option>Mobile Legends</option>
+                <option>Free Fire</option>
+                <option>Genshin Impact</option>
+                <option>Valorant</option>
+              </select>
+            </div>
+            <div>
+              <label for="player">ID / Username</label>
+              <input id="player" type="text" placeholder="Masukkan ID / username" />
+            </div>
+
+            <div>
+              <label for="server">Server</label>
+              <input id="server" type="text" placeholder="(opsional)" />
+            </div>
+            <div>
+              <label for="package">Nominal / Paket</label>
+              <select id="package">
+                <option value="">— Pilih paket —</option>
+                <option value="10000">Basic — Rp 10.000</option>
+                <option value="50000">Pro — Rp 50.000</option>
+                <option value="150000">Premium — Rp 150.000</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="method">Metode Pembayaran</label>
+              <select id="method">
+                <option value="">— Pilih metode —</option>
+                <option>Transfer BCA</option>
+                <option>OVO</option>
+                <option>DANA</option>
+                <option>QRIS</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="email">Email (opsional)</label>
+              <input id="email" type="email" placeholder="email@contoh.com" />
+            </div>
+
+            <div class="full">
+              <button class="wa-btn" id="orderBtn" type="button">Pesan via WhatsApp</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ill" aria-hidden="true">
+        <!-- uses the provided hero image; keep background image if present -->
+        <img src="condet.png.png" alt="Ilustrasi ADITMARKET" id="condet.png.png" onerror="heroMissing()" />
+        <div id="heroFallback" class="ill-fallback" style="display:none"></div>
+      </div>
+    </section>
+
+    <!-- HERO B (alternative visual) -->
+    <section class="hero" id="heroB" aria-labelledby="heroBHeading" role="region" style="display:none;margin-top:20px;">
+      <div>
+        <h2 id="heroBHeading">Level Up Your Game — Cepat & Aman</h2>
+        <p>Versi alternatif desain. Klik tombol untuk kembali ke form pemesanan.</p>
+        <div style="margin-top:18px">
+          <button class="wa-btn" id="ctaToOrder" type="button" style="background:var(--accent);color:#111">Get Started</button>
+        </div>
+      </div>
+
+      <div class="hero-ill" aria-hidden="true">
+        <img src="ChatGPT Image Sep 25, 2025, 07_50_02 PM.png" alt="Alt ilustrasi" id="hero2" onerror="hero2Missing()" style="width:420px;max-width:100%;border-radius:10px" />
+        <div id="hero2Fallback" class="ill-fallback" style="display:none">ADIT</div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="pricing" aria-labelledby="pricingHeading">
+      <h3 id="pricingHeading" style="color:var(--purple);margin:10px 0 18px;text-align:center">Daftar Harga Populer</h3>
+      <div class="prices" role="list">
+        <div class="price" role="listitem">
+          <h4>Mobile Legends</h4>
+          <p>86 Diamond — Rp 20.000</p>
+          <p>172 Diamond — Rp 40.000</p>
+        </div>
+        <div class="price" role="listitem">
+          <h4>Free Fire</h4>
+          <p>70 Diamond — Rp 10.000</p>
+          <p>355 Diamond — Rp 50.000</p>
+        </div>
+        <div class="price" role="listitem">
+          <h4>Valorant</h4>
+          <p>475 VP — Rp 60.000</p>
+          <p>1000 VP — Rp 120.000</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section class="section testimoni" id="testimoni" aria-label="Testimoni pelanggan">
+      <div class="test">
+        <p>"Top-up super cepat! Baru transfer langsung masuk diamondnya."</p>
+        <strong>- Andi</strong>
+      </div>
+      <div class="test">
+        <p>"Admin ramah dan joki nya beneran jago. Rank naik instan!"</p>
+        <strong>- Siti</strong>
+      </div>
+      <div class="test">
+        <p>"Harga bersaing, proses rapi. Recommended!"</p>
+        <strong>- Budi</strong>
+      </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <footer id="contact" role="contentinfo">
+      <div style="max-width:var(--maxw);margin:0 auto">
+        <p style="margin:6px 0;font-weight:700">Hubungi kami:</p>
+        <p style="margin:6px 0">📞 <a href="https://wa.me/6289652853591" target="_blank" rel="noopener">0896 5285 3591</a> &nbsp;&nbsp; ✉️ <a href="mailto:condetstore28@gmail.com">condetstore28@gmail.com</a></p>
+        <p style="margin-top:14px;color:var(--muted)">© <span id="year"></span> ADITMARKET — Semua hak dilindungi</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Fallback handlers
+    function logoMissing(){
+      const wrap = document.getElementById('logoWrap');
+      if(!wrap) return;
+      wrap.innerHTML = '<div style=\"width:56px;height:56px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#7c5cff,#ff4fa3);color:#fff;font-weight:800\">AM</div>';
+    }
+    function heroMissing(){
+      const img = document.getElementById('heroImg');
+      if(img) img.style.display='none';
+      const f = document.getElementById('heroFallback'); if(f) f.style.display='grid';
+    }
+    function hero2Missing(){
+      const img = document.getElementById('hero2');
+      if(img) img.style.display='none';
+      const f = document.getElementById('hero2Fallback'); if(f) f.style.display='grid';
+    }
+
+    // view toggle logic
+    document.addEventListener('DOMContentLoaded', function(){
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const viewA = document.getElementById('viewA');
+      const viewB = document.getElementById('viewB');
+      const heroA = document.getElementById('heroA');
+      const heroB = document.getElementById('heroB');
+
+      function setView(which){
+        if(which==='A'){ heroA.style.display='grid'; heroB.style.display='none'; viewA.classList.add('active'); viewB.classList.remove('active'); }
+        else { heroA.style.display='none'; heroB.style.display='grid'; viewB.classList.add('active'); viewA.classList.remove('active'); }
+      }
+      viewA.addEventListener('click', ()=>setView('A'));
+      viewB.addEventListener('click', ()=>setView('B'));
+      // default: A
+      setView('A');
+
+      // order button -> WhatsApp
+      const orderBtn = document.getElementById('orderBtn');
+      orderBtn.addEventListener('click', function(){
+        const game = (document.getElementById('game')||{}).value || '-';
+        const player = (document.getElementById('player')||{}).value.trim() || '-';
+        const server = (document.getElementById('server')||{}).value.trim() || '-';
+        const pack = (document.getElementById('package')||{}).value || '-';
+        const method = (document.getElementById('method')||{}).value || '-';
+        const email = (document.getElementById('email')||{}).value.trim() || '-';
+
+        if(game==='-' || player==='-'){
+          alert('Mohon isi minimal Nama Game dan ID / Username.');
+          return;
+        }
+
+        const wa = '6289652853591';
+        const message = `Halo ADITMARKET,%0ASaya mau order top-up.%0AGame: ${encodeURIComponent(game)}%0AID: ${encodeURIComponent(player)}%0AServer: ${encodeURIComponent(server)}%0APaket: ${encodeURIComponent(pack)}%0AMetode: ${encodeURIComponent(method)}%0AEmail: ${encodeURIComponent(email)}`;
+        const url = 'https://wa.me/' + wa + '?text=' + message;
+        window.open(url, '_blank');
+      });
+
+      // CTA in hero B
+      const cta = document.getElementById('ctaToOrder');
+      if(cta) cta.addEventListener('click', function(){
+        setView('A');
+        // focus first field
+        setTimeout(()=>{ const g = document.getElementById('game'); if(g) g.focus(); }, 450);
+      });
+
+      // quick image presence check (console only)
+      ['ChatGPT Image Sep 25, 2025, 07_50_02 PM.png','ChatGPT Image Sep 25, 2025, 07_50_02 PM.png','ChatGPT Image Sep 25, 2025, 07_50_02 PM.png'].forEach(src=>{
+        const i = new Image();
+        i.onerror = ()=>console.warn('Image not found:', src);
+        i.src = src;
+      });
+
+    });
+  </script>
+</body>
+</html>
